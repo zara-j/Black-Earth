@@ -1,0 +1,28 @@
+name: build z-black-earth
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+                          
+             
+  build-z-black-earth:
+#    needs: check-code
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@master
+      - run: |
+              ls -lah
+              docker build -t z-black-earth .
+              
+              
+              
+  deploy-z-black-earth:
+    needs: build-z-black-earth
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@master
+      - run: |
+              docker rm -f z-black-earth
+              docker run -d -n z-black-earth -p 3000:3000 z-black-earth 
