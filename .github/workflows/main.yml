@@ -11,7 +11,7 @@ jobs:
 #    needs: check-code
     runs-on: [self-hosted, linux]
     steps:
-      - uses: actions/checkout@maim
+      - uses: actions/checkout@main
       - run: |
               whoami
               ls -lah
