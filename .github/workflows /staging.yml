@@ -11,7 +11,7 @@ jobs:
 #    needs: check-code
     runs-on: [self-hosted, linux]
     steps:
-      - uses: actions/checkout@master
+      #- uses: actions/checkout@master
       - run: |
               ls -lah
               docker build -t z-black-earth .
@@ -22,7 +22,7 @@ jobs:
     needs: build-z-black-earth
     runs-on: [self-hosted, linux]
     steps:
-      - uses: actions/checkout@master
+      #- uses: actions/checkout@master
       - run: |
               docker rm -f z-black-earth
               docker run -d -n z-black-earth -p 3000:3000 z-black-earth 
